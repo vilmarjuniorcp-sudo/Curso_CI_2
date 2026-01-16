@@ -17,3 +17,10 @@ jobs:
     with:
       username: vilmardesouza
       password: ${{ secrets.PASSWORD_DOCKER_HUB }}
+  - name: Build and push Docker images
+    uses: docker/build-push-action@v3.1.1
+    with:
+      context: .
+      file: ./Dockerfile
+      push: true
+      tags: vilmardesouza/go_ci:${{github.ref_name}}
